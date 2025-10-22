@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Update system packages
+echo "Updating system packages..."
+sudo apt update -y
+sudo apt upgrade -y
+
+# Install Docker
+echo "Installing Docker..."
+sudo yum install -y docker
+
+# Enable Docker to start on boot
+echo "Enabling Docker service..."
+sudo systemctl enable docker
+
+# Start Docker service
+echo "Starting Docker service..."
+sudo systemctl start docker
+
+# Verify Docker installation
+echo "Checking Docker version..."
+docker --version
+
+echo "Docker installation completed successfully!"
