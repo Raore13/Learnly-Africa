@@ -1,0 +1,18 @@
+ sudo docker run -d \
+  --name mysql_container \
+  -e MYSQL_ROOT_PASSWORD=rootpassword \
+  -e MYSQL_DATABASE=wordpress_db \
+  -e MYSQL_USER=wordpress_user \
+  -e MYSQL_PASSWORD=wordpress_pass \
+  mysql:5.7
+3c7d9146495d7bec6f308a9a29fc0dc60a1b9b16c954f29315b48ea2136657ca
+[root@ip-172-31-44-73 ~]# sudo docker run -d \
+  --name wordpress_container \
+  -p 80:80 \
+  -e WORDPRESS_DB_HOST=mysql_container:3306 \
+  -e WORDPRESS_DB_USER=wordpress_user \
+  -e WORDPRESS_DB_PASSWORD=wordpress_pass \
+  -e WORDPRESS_DB_NAME=wordpress_db \
+  --link mysql_container:mysql \
+  wordpress:latest
+09f1665d62f239984bef67a547e8ec0c51fe750cc81c462a5861cd3578d59c61
